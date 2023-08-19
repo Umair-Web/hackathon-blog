@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+.navbar{
+    background-color: #5C4B99!important;
+    border-radius: 0px 0px 20px 20px;
+    
+}
+.navbar-brand{
+    font-size: 25px;
+    font-weight: 600;
+    color: #fff0e6 !important;
+}
+.btn{
+    color: #3D246C !important;
+    border-color: #3D246C;
+}
+.btn:hover{
+    background-color:  #3D246C;
+    color: #fff !important;
+    font-weight: 700;
+}
+.Greeting{
+    background-color: #d5cdee;
+  
+    margin: 10px 40px;
+    border-radius:  10px;
+    height: 40px;
+    text-align: center;
+    padding: 6px;
+}
+
+.Greeting p{
+    color: #333;
+    font-size: 20px;
+} 
+.main-section{
+    margin: 10px 40px;
+    background-color: #d5cdee;
+    padding: 10px;
+    border-radius:  12px;
+    height:100%;
+    overflow-x: hidden;
+}
+.main-section h3{
+    color: #333 ;
+    
+}
+.section-blogs{
+    border: 3px solid #3D246C;
+    height:100%;
+    padding: 20px;
+    border-radius:  12px;
+}
+.section-blogs .card{
+    border-radius:  12px;
+
+}
+.card-header img{
+    height: 100px;
+    width: 80px;
+    border-radius:  12px;
+    
+}
