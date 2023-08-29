@@ -16,14 +16,20 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
+
+// loader
+var loader=document.getElementById("loader");
+// loader.style.display="none";
+
 // Log in Blog Website
 let bloglogin=document.getElementById("blog-login-button");
 bloglogin.addEventListener("click",()=>{
 window.location.href="login.html";
 
-// SignUp in Blog Website
+
 
 })
+// SignUp in Blog Website
 let blogSignup=document.getElementById("blog-signup-button");
 blogSignup.addEventListener("click",()=>{
 window.location.href="signup.html";
@@ -75,13 +81,14 @@ let getData=async()=>{
       
   
     } );
-    console.log(collectionarray)
+    console.log("collection out of loop",collectionarray)
+    loader.style.display="none";
 
   for(var j=0;j<collectionarray.length;j++){
   console.log(collectionarray[j])
   allMainData.innerHTML +=`
   
-  <div class="card" style="width: 100%;margin-top: 20px;">
+  <div class="card"  style="width: 100%;margin-top: 20px;">
   <div class="card-body blogs-cards">
     <div class="card-header d-flex">
       <div>
@@ -95,10 +102,25 @@ let getData=async()=>{
     </div>
   
     <p class="card-text" id="blog-content">${collectionarray[j].content}</p>
-    <a href="#" class="card-link">See all from the user...</a>
+    <p href="#" class="card-link" data-userid="${collectionarray[j].userid}">See all from the user...</p>
   </div> `
   
   }
+  
+  const cardElements = document.querySelectorAll('.card-link');
+  cardElements.forEach((card) => {
+    card.addEventListener('click', (event) => {
+
+    
+      const useridSpecific = event.currentTarget.dataset.userid;
+      console.log('Clicked user ID:', useridSpecific);
+      localStorage.setItem("allblogsuserid",useridSpecific)
+      window.location.href="certainblog.html"
+   
+  
+      
+    });
+  });
   }
   getData()
   

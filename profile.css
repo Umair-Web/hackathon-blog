@@ -17,12 +17,12 @@
     color: #fff0e6 !important;
 }
 .btn{
-    color: #3D246C !important;
-    border-color: #3D246C;
+    color: #FFDBC3 !important;
+    border-color: #FFDBC3;
 }
 .btn:hover{
-    background-color:  #3D246C;
-    color: #fff !important;
+    background-color:  #FFDBC3;
+    color: #5C4B99 !important;
     font-weight: 700;
 }
 .Greeting{
@@ -65,5 +65,17 @@
     height: 100px;
     width: 80px;
     border-radius:  12px;
-    
+
+}
+#Update-btn{
+    background-color: #5C4B99;
+}
+#btn-go-somewhere{
+    background-color: #5C4B99;
+}
+#Update-btn:hover{
+    background-color: #FFDBC3;
+}
+#btn-go-somewhere:hover{
+    background-color: #FFDBC3;
 }

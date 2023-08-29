@@ -74,3 +74,36 @@
 #blog-content{
    margin-top: 20px;
 }
+.card-link{
+    color:#3D246C;
+    font-weight: 700;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+#loader {
+    z-index: 2;
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    border-radius: 50%;
+    display: block;
+    margin:15px auto;
+    /* position: relative; */
+    background: #917fb4;
+    color:#473071;
+    box-shadow: -24px 0, 24px 0;
+    box-sizing: border-box;
+    animation: rotation 2s ease-in-out infinite;
+  }
+  
+  @keyframes rotation {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  } 

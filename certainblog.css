@@ -17,12 +17,12 @@
     color: #fff0e6 !important;
 }
 .btn{
-    color: #3D246C !important;
-    border-color: #3D246C;
+    color: #FFDBC3 !important;
+    border-color: #FFDBC3;
 }
 .btn:hover{
-    background-color:  #3D246C;
-    color: #fff !important;
+    background-color:  #FFDBC3;
+    color: #5C4B99 !important;
     font-weight: 700;
 }
 .Greeting{
@@ -67,24 +67,20 @@
     border-radius:  12px;
     
 }
-
-#blog-logout-button{
-    color: #FFDBC3 !important;
-    border-color: #FFDBC3;
-}
-#blog-logout-button:hover{
-    background-color:  #FFDBC3;
-    color: #5C4B99 !important;
-    font-weight: 700;
-}
-#blogger-name{
-    font-size: 23px;
-    font-weight: 700;
+.card{
+ 
+    border-radius: 40px;
 }
 #blog-content{
-    margin-top: 20px;
- }
- #loader {
+   margin-top: 20px;
+}
+.card-link{
+    color:#3D246C;
+    font-weight: 700;
+    text-decoration: underline;
+    cursor: pointer;
+}
+#loader {
     z-index: 2;
     width: 16px;
     height: 16px;

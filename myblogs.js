@@ -1,6 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
 import { getAuth,createUserWithEmailAndPassword,signInWithEmailAndPassword,onAuthStateChanged ,signOut } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
-import { getFirestore ,collection, addDoc,getDocs,doc, setDoc,query,where } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore.js";
+import { getFirestore ,collection, addDoc,getDocs,getDoc,doc, setDoc,query,where } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCeLwbNthXq2WVDxS4nkEN43DEL6Xx5HDY",
@@ -19,7 +19,11 @@ const db = getFirestore(app);
 
 ///////////////////////////////////////////////////////////////////////
 
+// loader
+var loader=document.getElementById("loader");
+// loader.style.display="none";
 
+let userUID=localStorage.getItem("ReferenceID")
 
 //Sign out user
 
@@ -45,20 +49,39 @@ let year = currentDate.getFullYear();
 let month = currentDate.getMonth() + 1; 
 let day = currentDate.getDate();
 let formattedDate = `${month}-${day}-${year}`;
-console.log(formattedDate);
+console.log("current date",formattedDate);
 
-// Getting abd setting data of blogger
-let userUID=localStorage.getItem("ReferenceID")
+
+
+
+// Getting and setting data of blogger
+
+          // link on blogger name [⬇]
 let BloggerName=document.getElementById("blogger-name");
-let Username=localStorage.getItem("username");
-console.log(Username)
-console.log(BloggerName)
-BloggerName.innerHTML=Username;
-console.log(BloggerName)
-
 BloggerName.addEventListener("click",()=>{
-  window.location.href="profile.html"
+window.location.href="profile.html"
+  
 })
+
+let  setBloggerName=async()=>{
+  const docRef = doc(db, "users", userUID);
+  const docSnap = await getDoc(docRef);
+
+  if (docSnap.exists()) {
+    localStorage.setItem("CurrentUserName",docSnap.data().name)
+      let CurrentUserName=localStorage.getItem("CurrentUserName");
+      BloggerName.innerHTML=docSnap.data().name;
+  console.log("Document data:", docSnap.data());
+  }
+}
+setBloggerName();
+//////////////////////////////////////////////////////////////////////////
+
+
+let CurrentUserName=localStorage.getItem("CurrentUserName");
+console.log(CurrentUserName)
+
+
 //Setting Data From Fields
 
 let allData=document.getElementById("all-blogs");
@@ -70,7 +93,7 @@ let PublishData=document.getElementById("blog-publish");
 PublishData.addEventListener("click",async()=>{
 
 try{
-// Getting User Input Data nad strong in firebase
+// Getting User Input Data and storing in firebase
 
 
 
@@ -87,7 +110,7 @@ try{
       title: `${inputtitle}`,
       content: `${inputcontent}`,
       time: formattedDate,
-      name:Username,
+      name:CurrentUserName,
       userid:userUID
     });
     console.log("Document written with ID: ", docRef.id);
@@ -127,7 +150,7 @@ console.log(userUID)
     
 
   } );
-  console.log(collectionarray)
+  console.log("collectionarray",collectionarray)
   for(var i=0;i<collectionarray.length;i++){
    if(collectionarray[i].userid==userUID){
     sortedcollectionarray.push(collectionarray[i])
@@ -138,6 +161,7 @@ console.log(userUID)
    }
 
   }
+  loader.style.display="none";
 for(var j=0;j<sortedcollectionarray.length;j++){
 console.log(sortedcollectionarray[j])
 allData.innerHTML +=`

@@ -18,6 +18,17 @@ const auth = getAuth(app);
 const db = getFirestore(app);
 ///////////////////////////////////////////////////////////////////////
 
+// loader
+var loader=document.getElementById("loader");
+loader.style.display="none";
+
+var mainDisplay=document.getElementById("main-display");
+// mainDisplay.style.display="none";
+
+
+
+
+
 //SignUP
 
 let signuoButton=document.getElementById("Sign-up");
@@ -65,6 +76,8 @@ createUserWithEmailAndPassword(auth,userprofile.email,userprofile.password)
   .then(async(userCredential) => {
     const user = userCredential.user; 
     console.log("user made at sign up",user);
+    mainDisplay.style.display="none";
+    loader.style.display="flex";
 
     // storing in database
     // for storing data with auto generated ref id
@@ -78,10 +91,12 @@ createUserWithEmailAndPassword(auth,userprofile.email,userprofile.password)
 
         
       });
+     
       localStorage.setItem("ReferenceID",user.uid);
       localStorage.setItem("username",username);
       console.log("Refrence ID is stored")
       console.log("Document written with ID: ", user.uid);
+      
 
       
     } catch (e) {
